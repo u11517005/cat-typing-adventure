@@ -96,16 +96,16 @@
           <div class="hands">
             <div class="hand-box">
               <h3>🤚 左手</h3>
-              <div class="keys"><span class="key">A</span><span class="key">S</span><span class="key">D</span><span class="key home">F</span></div>
-              <p class="tip">小提醒：左手四指放在 A、S、D、F</p>
+              <div class="keys"><span class="key">A</span><span class="key">S</span><span class="key">D</span><span class="key home">F</span><span class="key home">G</span></div>
+              <p class="tip">左手小指 A、無名指 S、中指 D、食指 F 和 G</p>
             </div>
             <div class="hand-box">
               <h3>✋ 右手</h3>
-              <div class="keys"><span class="key home">J</span><span class="key">K</span><span class="key">L</span><span class="key">;</span></div>
-              <p class="tip">小提醒：右手四指放在 J、K、L、分號鍵</p>
+              <div class="keys"><span class="key home">H</span><span class="key home">J</span><span class="key">K</span><span class="key">L</span><span class="key">;</span></div>
+              <p class="tip">右手食指 H 和 J、中指 K、無名指 L、小指分號鍵</p>
             </div>
           </div>
-          <p class="center tip">F 和 J 通常有小凸點，可以用食指摸摸看。</p>
+          <p class="center tip">F 和 J 通常有小凸點，可以用食指摸摸看。G 由左手食指負責，H 由右手食指負責。</p>
           <div class="center" style="margin-top:22px"><button class="primary" id="practiceButton">我準備好了！開始練習 →</button></div>
         </div>
         <div class="lesson-card hidden" id="practiceLesson">
@@ -113,7 +113,7 @@
           <div class="practice-area">
             <p>請在實體鍵盤按下這個字母：</p>
             <div class="target-letter" id="targetLetter">F</div>
-            <p id="roundText">練習 1 / 5</p>
+            <p id="roundText">練習 1 / 10</p>
             <div class="feedback" id="feedback" aria-live="polite">準備好了嗎？</div>
             <div class="keyboard" id="keyboard"></div>
             <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
@@ -122,8 +122,8 @@
         </div>
         <div class="lesson-card hidden center" id="completeLesson">
           <div style="font-size:4rem">🐱🎉</div>
-          <h2>太棒了！完成第一個練習！</h2>
-          <p>小貓找到了一條通往森林的小路，獲得小魚乾 × 1。</p>
+          <h2>太棒了！完成基準列練習！</h2>
+          <p>你練習了 A、S、D、F、G、H、J、K、L、; 共 10 個按鍵。小貓找到了一條通往森林的小路，獲得小魚乾 × 1。</p>
           <button class="primary" id="againButton">再練習一次</button>
           <button class="back-button" id="homeAgainButton" style="margin-left:8px">回到首頁</button>
         </div>
@@ -141,7 +141,7 @@
     const roundText = document.getElementById('roundText');
     const progressFill = document.getElementById('progressFill');
     const keyboard = document.getElementById('keyboard');
-    const practiceKeys = ['A', 'S', 'D', 'F', 'J', 'K', 'L', ';'];
+    const practiceKeys = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';'];
     let letters = [];
     let round = 0;
     let fish = 0;
@@ -155,7 +155,7 @@
     }
     function startPractice() {
       round = 0;
-      // 每次開始練習，都把 ASDFJKL; 隨機排列一次，讓順序不固定。
+      // 每次開始練習，都把 ASDFGHJKL; 這 10 個基準列按鍵隨機排列。
       letters = [...practiceKeys];
       for (let i = letters.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
